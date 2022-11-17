@@ -55,6 +55,9 @@ class LoginApi(views.APIView):
 
         resp.set_cookie(key='jwt', value=token, httponly=True)
 
+        resp = response.Response({'message': 'success'})
+        #resp.set_cookie(key='jwt', value=token, httponly=True)
+        resp.set_cookie(key='jwt', value=token, samesite='none', secure=True)
         return resp
 
 
@@ -131,3 +134,12 @@ class EditApi(views.APIView):
 
     def put(self, request):
         return self.patch(request)
+        return self.patch(request)
+
+
+class CheckLogin(views.APIView):
+    authentication_classes = (authentication.CustomUserAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request):
+        return response.Response({'message': 'logged'}, 200)
