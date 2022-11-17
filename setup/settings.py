@@ -26,7 +26,11 @@ JWT_SECRET = 'findmypet2022'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Host = 150.230.73.121
+ALLOWED_HOSTS = [
+    'localhost',
+    '150.230.73.121'
+]
 
 
 # Application definition
