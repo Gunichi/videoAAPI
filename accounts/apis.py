@@ -58,6 +58,10 @@ class LoginApi(views.APIView):
         resp = response.Response({'message': 'success'})
         #resp.set_cookie(key='jwt', value=token, httponly=True)
         resp.set_cookie(key='jwt', value=token, samesite='none', secure=True)
+        resp = response.Response({'message': 'success', 'jwt': token})
+        resp.set_cookie(key='jwt', value=token, httponly=True)
+        resp.status_code = 200
+
         return resp
 
 
